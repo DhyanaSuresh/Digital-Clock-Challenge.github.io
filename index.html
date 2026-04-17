@@ -1,16 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dhyana Projects</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+    }
+
+    h1 {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 2.5rem;
+      color: #1e3a8a;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .level {
+      font-size: 0.8rem;
+      background: #e0f2fe;
+      padding: 5px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #0369a1;
+      font-weight: 600;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>My Clock Projects</h1>
+<h1>My Clock Projects ⏰</h1>
 
-<ul>
-  <li><a href="./seven-segment-clock/index.html">Seven Segment Clock</a></li>
-  <li><a href="./text-clock/index.html">Text Based Clock</a></li>
-</ul>
+<div class="container">
+
+  <div class="card">
+    <div class="level">Level 1</div>
+    <div class="title">Text-Based Clock</div>
+    <div class="desc">A clean digital clock using text fonts with real-time updates.</div>
+    <a class="btn" href="text-clock/index.html">View Project</a>
+  </div>
+
+  <div class="card">
+    <div class="level">Level 2</div>
+    <div class="title">Seven Segment Clock</div>
+    <div class="desc">A stylish LED-style clock built using HTML, CSS, and JavaScript.</div>
+    <a class="btn" href="seven-segment-clock/index.html">View Project</a>
+  </div>
+
+</div>
 
 </body>
 </html>
