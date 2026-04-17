@@ -1,0 +1,132 @@
+:root {
+  --on: #00ffcc;
+  --off: #022;
+  --glow: 0 0 5px var(--on), 0 0 10px var(--on), 0 0 20px var(--on);
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  background: radial-gradient(circle at center, #020617, #000);
+}
+
+/* 🌠 Glow layer */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+
+  background: radial-gradient(circle, rgba(0,255,200,0.15) 0%, transparent 60%);
+  animation: moveGlow 12s linear infinite;
+}
+
+/* 🧱 Grid layer */
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-image:
+    linear-gradient(rgba(0,255,200,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,200,0.05) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+  animation: gridMove 10s linear infinite;
+}
+
+/* clock container */
+.clock {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(0, 255, 200, 0.2);
+
+  box-shadow:
+    0 0 30px rgba(0,255,200,0.15),
+    inset 0 0 20px rgba(0,255,200,0.05);
+}
+
+/* digit */
+.digit {
+  position: relative;
+  width: 60px;
+  height: 120px;
+}
+
+/* segment */
+.segment {
+  position: absolute;
+  background: var(--on);
+  border-radius: 4px;
+  box-shadow: var(--glow);
+  transition: all 0.25s ease-in-out;
+}
+
+/* off */
+.off {
+  background: var(--off);
+  opacity: 0.15;
+  box-shadow: none;
+}
+
+/* segment positions */
+.A { top: 0; left: 10px; width: 40px; height: 6px; }
+.B { top: 6px; right: 0; width: 6px; height: 50px; }
+.C { bottom: 6px; right: 0; width: 6px; height: 50px; }
+.D { bottom: 0; left: 10px; width: 40px; height: 6px; }
+.E { bottom: 6px; left: 0; width: 6px; height: 50px; }
+.F { top: 6px; left: 0; width: 6px; height: 50px; }
+.G { top: 55px; left: 10px; width: 40px; height: 6px; }
+
+/* colon */
+.colon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 120px;
+}
+
+/* dots */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--on);
+  box-shadow: var(--glow);
+  animation: blink 1s infinite;
+}
+
+/* animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes moveGlow {
+  0% { transform: translate(-20%, -20%); }
+  50% { transform: translate(20%, 20%); }
+  100% { transform: translate(-20%, -20%); }
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
