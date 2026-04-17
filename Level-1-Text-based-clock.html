@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Clock</title>
+
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: radial-gradient(circle at center, #1e293b, #020617);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Glass Card Container */
+    .container {
+      text-align: center;
+      padding: 40px 60px;
+      border-radius: 20px;
+
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+
+      box-shadow: 
+        0 0 20px rgba(0, 247, 255, 0.2),
+        0 0 60px rgba(0, 247, 255, 0.1);
+    }
+
+    /* Clock */
+    #clock {
+      font-size: 5rem;
+      color: #00f7ff;
+      letter-spacing: 4px;
+
+      text-shadow: 
+        0 0 10px #00f7ff,
+        0 0 20px #00f7ff,
+        0 0 40px #00f7ff;
+
+      transition: all 0.3s ease;
+    }
+
+    /* Date */
+    #date {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      color: #cbd5f5;
+      letter-spacing: 2px;
+    }
+
+    /* Subtle animation */
+    #clock:hover {
+      transform: scale(1.05);
+      text-shadow: 
+        0 0 20px #00f7ff,
+        0 0 40px #00f7ff,
+        0 0 80px #00f7ff;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      #clock {
+        font-size: 3rem;
+      }
+
+      .container {
+        padding: 25px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="clock">00:00:00</div>
+    <div id="date"></div>
+  </div>
+  
+  <script>
+    function updateClock() { //function clock
+      const now = new Date(); //object now contains new Date which is Date Obj of JS ... by default automatically contains (Day , Month , Yr) Date + Time
+
+      let hours = now.getHours();
+      let minutes = now.getMinutes(); //extracting hrs, mins, secs ; now.getHours ( built in methods )
+      let seconds = now.getSeconds();
+
+      // AM/PM
+      let ampm = hours >= 12 ? "PM" : "AM"; //ternary op
+
+      // Convert to 12-hour format
+      hours = hours % 12 || 12; 
+
+      // Add leading zeros
+      hours = String(hours).padStart(2, '0');
+      minutes = String(minutes).padStart(2, '0');   //converts to String and until string reaches the target length(2) it'll add pad char (0)
+      seconds = String(seconds).padStart(2, '0');
+
+      // Update time DOM
+      document.getElementById("clock").textContent =
+        `${hours}:${minutes}:${seconds} ${ampm}`; //JS view of HTML
+
+      // Update date DOM
+      document.getElementById("date").textContent =
+        now.toDateString(); //from Obj
+    }
+
+    // Run every second
+    setInterval(updateClock, 1000); //updates every 1sec
+
+    // Run immediately
+    updateClock();
+  </script>
+
+</body>
+</html>
