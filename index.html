@@ -1,105 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dhyana Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhyana Suresh | Clock Projects</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
-    }
+<style>
+  :root {
+    --bg: linear-gradient(135deg, #dbeafe, #e0f2fe);
+    --card: rgba(255,255,255,0.6);
+    --text: #1e293b;
+    --accent: #2563eb;
+  }
 
-    h1 {
-      text-align: center;
-      padding: 30px 0;
-      font-size: 2.5rem;
-      color: #1e3a8a;
-    }
+  body.dark {
+    --bg: linear-gradient(135deg, #0f172a, #1e293b);
+    --card: rgba(30,41,59,0.6);
+    --text: #f1f5f9;
+    --accent: #3b82f6;
+  }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+  }
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    }
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
 
-    .level {
-      font-size: 0.8rem;
-      background: #e0f2fe;
-      padding: 5px 10px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 10px;
-      color: #0369a1;
-      font-weight: 600;
-    }
+  header p {
+    opacity: 0.7;
+  }
 
-    .title {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+  .toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background: var(--card);
+    padding: 10px 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
 
-    .desc {
-      color: #555;
-      margin-bottom: 15px;
-    }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    max-width: 1100px;
+    margin: auto;
+  }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 15px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-    }
+  .card {
+    backdrop-filter: blur(15px);
+    background: var(--card);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: 0.3s;
+  }
 
-    .btn:hover {
-      background: #1d4ed8;
-    }
-  </style>
+  .card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .level {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(37,99,235,0.15);
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .desc {
+    opacity: 0.8;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: white;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    opacity: 0.85;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+</style>
 </head>
 
 <body>
 
-<h1>My Clock Projects ⏰</h1>
+<div class="toggle" onclick="toggleMode()">🌙</div>
+
+<header>
+  <h1>Dhyana Suresh</h1>
+  <p>Frontend Projects</p>
+</header>
 
 <div class="container">
 
   <div class="card">
     <div class="level">Level 1</div>
-    <div class="title">Text-Based Clock</div>
-    <div class="desc">A clean digital clock using text fonts with real-time updates.</div>
+    <div class="title">🕒 Text-Based Clock</div>
+    <div class="desc">A responsive digital clock using text rendering with real-time updates.</div>
     <a class="btn" href="text-clock/index.html">View Project</a>
   </div>
 
   <div class="card">
     <div class="level">Level 2</div>
-    <div class="title">Seven Segment Clock</div>
-    <div class="desc">A stylish LED-style clock built using HTML, CSS, and JavaScript.</div>
+    <div class="title">💡 Seven Segment Clock</div>
+    <div class="desc">LED-style clock built using pure HTML, CSS, and JavaScript animations.</div>
     <a class="btn" href="seven-segment-clock/index.html">View Project</a>
   </div>
 
 </div>
+
+<footer>
+  Built by Dhyana 🚀
+</footer>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("dark");
+}
+</script>
 
 </body>
 </html>
